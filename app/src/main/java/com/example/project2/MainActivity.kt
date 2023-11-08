@@ -9,6 +9,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 }
-
 //hello 여빈
+//hello 찬혁
+//hello 근형
 //hello 찬혁
