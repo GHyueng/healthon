@@ -13,10 +13,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [Group.newInstance] factory method to
+ * Use the [ChooseExerciseFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class Group : Fragment() {
+class ChooseExerciseFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,7 +34,7 @@ class Group : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_group, container, false)
+        return inflater.inflate(R.layout.fragment_choose_exercise, container, false)
     }
 
     companion object {
@@ -44,12 +44,12 @@ class Group : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment Group.
+         * @return A new instance of fragment ChooseExerciseFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            Group().apply {
+            ChooseExerciseFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

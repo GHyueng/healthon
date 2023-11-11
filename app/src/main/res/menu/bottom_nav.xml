@@ -3,14 +3,14 @@
 
     <item
         android:title="Diet"
-        android:id="@+id/diet"
+        android:id="@+id/dietFragment"
         android:icon="@drawable/ic_food"/>
     <item
         android:title="Home"
-        android:id="@+id/home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"/>
     <item
         android:title="Group"
-        android:id="@+id/group"
+        android:id="@+id/groupFragment"
         android:icon="@drawable/ic_group"/>
 </menu>

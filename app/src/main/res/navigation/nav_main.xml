@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.project2.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_dietFragment"
+            app:destination="@id/dietFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_groupFragment"
+            app:destination="@id/groupFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_chooseExerciseFragment"
+            app:destination="@id/chooseExerciseFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_routineManageFragment"
+            app:destination="@id/routineManageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dietFragment"
+        android:name="com.example.project2.DietFragment"
+        android:label="fragment_diet"
+        tools:layout="@layout/fragment_diet" />
+    <fragment
+        android:id="@+id/chooseExerciseFragment"
+        android:name="com.example.project2.ChooseExerciseFragment"
+        android:label="fragment_choose_exercise"
+        tools:layout="@layout/fragment_choose_exercise" />
+    <fragment
+        android:id="@+id/exerciseManageFragment"
+        android:name="com.example.project2.ExerciseManageFragment"
+        android:label="fragment_exercise_manage"
+        tools:layout="@layout/fragment_exercise_manage" />
+    <fragment
+        android:id="@+id/groupFragment"
+        android:name="com.example.project2.GroupFragment"
+        android:label="fragment_group"
+        tools:layout="@layout/fragment_group" />
+    <fragment
+        android:id="@+id/routineManageFragment"
+        android:name="com.example.project2.RoutineManageFragment"
+        android:label="fragment_routine_manage"
+        tools:layout="@layout/fragment_routine_manage" >
+        <action
+            android:id="@+id/action_routineManageFragment_to_exerciseManageFragment"
+            app:destination="@id/exerciseManageFragment" />
+    </fragment>
+</navigation>
