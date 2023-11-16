@@ -22,11 +22,14 @@ class HomeFragment : Fragment() {
         return binding?.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
+
+    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding?.button1?.setOnClickListener{
             findNavController().navigate(R.id.action_homeFragment_to_chooseExerciseFragment)
         }
-    }
+    }*/
 }

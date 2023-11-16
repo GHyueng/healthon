@@ -7,7 +7,7 @@
         android:icon="@drawable/ic_food"/>
     <item
         android:title="Home"
-        android:id="@+id/homeFragment"
+        android:id="@+id/linearLayout"
         android:icon="@drawable/ic_home"/>
     <item
         android:title="Group"
