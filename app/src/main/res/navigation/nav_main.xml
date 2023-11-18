@@ -27,7 +27,11 @@
         android:id="@+id/dietFragment"
         android:name="com.example.project2.DietFragment"
         android:label="fragment_diet"
-        tools:layout="@layout/fragment_diet" />
+        tools:layout="@layout/fragment_diet" >
+        <action
+            android:id="@+id/action_dietFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/chooseExerciseFragment"
         android:name="com.example.project2.ChooseExerciseFragment"
@@ -42,7 +46,11 @@
         android:id="@+id/groupFragment"
         android:name="com.example.project2.GroupFragment"
         android:label="fragment_group"
-        tools:layout="@layout/fragment_group" />
+        tools:layout="@layout/fragment_group" >
+        <action
+            android:id="@+id/action_groupFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/routineManageFragment"
         android:name="com.example.project2.RoutineManageFragment"
