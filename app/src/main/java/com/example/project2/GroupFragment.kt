@@ -102,3 +102,5 @@ class GroupFragment : Fragment() {
         return friendsList
     }
 }
+}
+

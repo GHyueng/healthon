@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.project2.HomeFragment"
-        android:label="fragment_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_dietFragment"
@@ -17,11 +17,11 @@
             android:id="@+id/action_homeFragment_to_groupFragment"
             app:destination="@id/groupFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_chooseExerciseFragment"
-            app:destination="@id/chooseExerciseFragment" />
+            android:id="@+id/action_homeFragment_to_addFragment2"
+            app:destination="@id/addFragment2" />
         <action
-            android:id="@+id/action_homeFragment_to_routineManageFragment"
-            app:destination="@id/routineManageFragment" />
+            android:id="@+id/action_homeFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
     </fragment>
     <fragment
         android:id="@+id/dietFragment"
@@ -31,17 +31,10 @@
         <action
             android:id="@+id/action_dietFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_dietFragment_to_dietCheckFragment"
+            app:destination="@id/dietCheckFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/chooseExerciseFragment"
-        android:name="com.example.project2.ChooseExerciseFragment"
-        android:label="fragment_choose_exercise"
-        tools:layout="@layout/fragment_choose_exercise" />
-    <fragment
-        android:id="@+id/exerciseManageFragment"
-        android:name="com.example.project2.ExerciseManageFragment"
-        android:label="fragment_exercise_manage"
-        tools:layout="@layout/fragment_exercise_manage" />
     <fragment
         android:id="@+id/groupFragment"
         android:name="com.example.project2.GroupFragment"
@@ -55,17 +48,37 @@
             app:destination="@id/informationFragment" />
     </fragment>
     <fragment
-        android:id="@+id/routineManageFragment"
-        android:name="com.example.project2.RoutineManageFragment"
-        android:label="fragment_routine_manage"
-        tools:layout="@layout/fragment_routine_manage" >
+        android:id="@+id/addFragment2"
+        android:name="com.example.project2.AddFragment"
+        android:label="Add"
+        tools:layout="@layout/fragment_add" >
         <action
-            android:id="@+id/action_routineManageFragment_to_exerciseManageFragment"
-            app:destination="@id/exerciseManageFragment" />
+            android:id="@+id/action_addFragment2_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/informationFragment"
         android:name="com.example.project2.InformationFragment"
         android:label="fragment_information"
         tools:layout="@layout/fragment_information" />
+
+        android:id="@+id/updateFragment"
+        android:name="com.example.project2.UpdateFragment"
+        android:label="fragment_update"
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_updateFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/dietCheckFragment"
+        android:name="com.example.project2.DietCheckFragment"
+        android:label="fragment_diet_check"
+        tools:layout="@layout/fragment_diet_check" />
 </navigation>
