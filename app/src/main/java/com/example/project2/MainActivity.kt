@@ -4,26 +4,28 @@ package com.example.project2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.widget.EditText
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.project2.databinding.ActivityMainBinding
-import com.example.project2.model.UserData
-import com.example.project2.view.UserAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         //하단바
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val navController = findNavController(R.id.frg_nav)
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.addFragment2))
+
+        setupActionBarWithNavController(navController,appBarConfiguration)
+
         replaceFragment(HomeFragment())
 
         binding.bottomNavigationView.setOnItemSelectedListener {
@@ -49,7 +51,6 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.commit()
     }
 }
-
 
 
 

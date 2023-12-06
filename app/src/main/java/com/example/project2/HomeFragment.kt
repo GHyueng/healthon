@@ -1,78 +1,68 @@
 package com.example.project2
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.project2.databinding.FragmentHomeBinding
-import com.example.project2.model.UserData
-import com.example.project2.view.UserAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.example.project2.model.Contacts
+import com.example.project2.model.RvContactsAdapter
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class HomeFragment : Fragment() {
-    private lateinit var addsBtn: FloatingActionButton
-    private lateinit var recv: RecyclerView
-    private lateinit var userList: ArrayList<UserData>
-    private lateinit var userAdapter: UserAdapter
-    private lateinit var binding: FragmentHomeBinding
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var contactList: ArrayList<Contacts>
+    private lateinit var firebaseRef : DatabaseReference
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater,container,false )
+
+        binding.addsBtn.setOnClickListener{
+            findNavController().navigate(R.id.action_homeFragment_to_addFragment2)
+        }
+        firebaseRef = FirebaseDatabase.getInstance().getReference("contacts")
+        contactList = arrayListOf()
+
+        fetchData()
+        binding.rvContacts.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(this.context)
+        }
+
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private fun fetchData() {
+        firebaseRef.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                contactList.clear()
+                if (snapshot.exists()) {
+                    for (contactSnap in snapshot.children) {
+                        val contacts = contactSnap.getValue(Contacts::class.java)
+                        contactList.add(contacts!!)
+                    }
+                }
+                val rvAdapter = RvContactsAdapter(contactList)
+                binding.rvContacts.adapter = rvAdapter
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(context,"error : $error", Toast.LENGTH_SHORT).show()
+            }
 
-        /**리스트 설정*/
-        userList = ArrayList()
-
-        /**Adapter 설정*/
-        userAdapter = UserAdapter(requireContext(), userList)
-
-        /**recycler view Adapter 설정*/
-        binding.mRecycler.layoutManager = LinearLayoutManager(requireContext())
-        binding.mRecycler.adapter = userAdapter
-
-        /**dialog 설정*/
-        binding.addsBtn.setOnClickListener { addInfo() }
+        })
     }
 
-    private fun addInfo() {
-        val inflter = LayoutInflater.from(requireContext())
-        val v = inflter.inflate(R.layout.add_item, null)
-
-        /**view 설정*/
-        val userName = v.findViewById<EditText>(R.id.userName)
-        val userNo = v.findViewById<EditText>(R.id.userNo)
-
-        val addDialog = AlertDialog.Builder(requireContext())
-        addDialog.setView(v)
-        addDialog.setPositiveButton("Ok") { dialog, _ ->
-            val names = userName.text.toString()
-            val number = userNo.text.toString()
-            userList.add(UserData("Name: $names", "Mobile No. : $number"))
-            userAdapter.notifyDataSetChanged()
-            Toast.makeText(requireContext(), "Adding", Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
-        }
-        addDialog.setNegativeButton("Cancel") { dialog, _ ->
-            dialog.dismiss()
-            Toast.makeText(requireContext(), "Cancel", Toast.LENGTH_SHORT).show()
-        }
-        addDialog.create()
-        addDialog.show()
-    }
 }

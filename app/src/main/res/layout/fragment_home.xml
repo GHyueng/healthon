@@ -21,7 +21,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mRecycler"
+        android:id="@+id/rvContacts"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
