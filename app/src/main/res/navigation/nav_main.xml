@@ -50,6 +50,9 @@
         <action
             android:id="@+id/action_groupFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_groupFragment_to_informationFragment"
+            app:destination="@id/informationFragment" />
     </fragment>
     <fragment
         android:id="@+id/routineManageFragment"
@@ -60,4 +63,9 @@
             android:id="@+id/action_routineManageFragment_to_exerciseManageFragment"
             app:destination="@id/exerciseManageFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/informationFragment"
+        android:name="com.example.project2.InformationFragment"
+        android:label="fragment_information"
+        tools:layout="@layout/fragment_information" />
 </navigation>
